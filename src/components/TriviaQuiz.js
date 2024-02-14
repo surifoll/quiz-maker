@@ -82,8 +82,9 @@ const TriviaQuiz = ({ categoryId, difficulty, createCount }) => {
                                             key={answerIndex}
                                             className={`btn btn-outline-success me-2 mb-2 ${selectedAnswers.find(x => x.question == question.question)?.selectedAnswer === answer ? 'active' : ''}`}
                                             onClick={() => handleAnswerClick(question.question, answer)}
+                                            dangerouslySetInnerHTML={{ __html: answer }}
                                         >
-                                            {answer}
+
                                         </button>
                                     ))}
                                 </div>
