@@ -39,7 +39,7 @@ const QuizEvaluation = () => {
             <ul className="list-group mt-4">
                 {questions.map((question, index) => (
                     <li key={index} className="list-group-item">
-                        <h5>{question.question}</h5>
+                        <h5 dangerouslySetInnerHTML={{ __html: question.question }}></h5>
                         <div>
                             {question.allAnswers.map((answer, answerIndex) => {
                                 const selectedAnswer = selectedAnswers.find(x => x.question == question.question)?.selectedAnswer;
@@ -52,8 +52,9 @@ const QuizEvaluation = () => {
                                         key={answerIndex}
                                         className={`btn me-2 mb-2 ${question.correct_answer === answer ? 'active btn-outline-success' : 'btn-outline-success'}`}
                                         style={wrongAnswerStyle}
+                                        dangerouslySetInnerHTML={{ __html: answer }}
                                     >
-                                        {answer}
+
                                     </button>
                                 )
 
@@ -62,9 +63,10 @@ const QuizEvaluation = () => {
                             }
                         </div>
                         <p className={`mb-0 ${question.correct_answer === selectedAnswers.find(x => x.question == question.question)?.selectedAnswer ? 'text-success' : 'text-danger'}`}>
-                            Your answer: {selectedAnswers.find(x => x.question == question.question)?.selectedAnswer || 'Not answered'}
+                            Your answer:  <span dangerouslySetInnerHTML={{ __html: selectedAnswers.find(x => x.question == question.question)?.selectedAnswer || 'Not answered' }}></span>
                         </p>
-                        <p className="mb-0 text-success">Correct answer: {question.correct_answer}</p>
+                        <p className="mb-0 text-success">Correct answer: <span dangerouslySetInnerHTML={{ __html: question.correct_answer }}></span>
+                        </p>
                     </li>
                 ))}
             </ul>
