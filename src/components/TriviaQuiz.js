@@ -75,7 +75,7 @@ const TriviaQuiz = ({ categoryId, difficulty, createCount }) => {
                     {
                         questions.map((question, index) => (
                             <div key={index} className="mb-4">
-                                <h5>{question.question}</h5>
+                                <h5 dangerouslySetInnerHTML={{ __html: question.question }}></h5>
                                 <div>
                                     {question.allAnswers.map((answer, answerIndex) => (
                                         <button

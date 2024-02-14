@@ -22,6 +22,7 @@ const TriviaCategory = () => {
         setCreateCount(createCount + 1);
     };
 
+
     useEffect(() => {
         const fetchCategories = async () => {
             try {
